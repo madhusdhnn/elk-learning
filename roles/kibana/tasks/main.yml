@@ -1,0 +1,20 @@
+---
+
+- name: "Install Kibana"
+  apt :
+    name : "kibana"
+    state: present
+
+- name    : "Configure Kibana"
+  template:
+    src  : "kibana.yml.j2"
+    dest : "/etc/kibana/kibana.yml"
+    owner: root
+    group: kibana
+    mode : 0750
+
+- name   : "Start Kibana"
+  service:
+    name   : "kibana"
+    state  : restarted
+    enabled: yes

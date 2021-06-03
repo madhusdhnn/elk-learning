@@ -1,0 +1,4 @@
+---
+
+- include: common.yml
+- include: elk_setup.yml

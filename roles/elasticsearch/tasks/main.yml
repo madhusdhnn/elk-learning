@@ -1,0 +1,28 @@
+---
+
+- name: "Install elasticsearch"
+  apt :
+    name        : "elasticsearch"
+    state       : present
+    update_cache: yes
+
+- name    : "Configure Elasticsearch"
+  template:
+    src  : "elasticsearch.yml.j2"
+    dest : "{{es_config_file_path}}"
+    owner: root
+    group: elasticsearch
+    mode : 0750
+
+- name   : "Start Elasticsearch"
+  service:
+    name   : "elasticsearch"
+    state  : restarted
+    enabled: yes
+
+- name    : "Make sure Elasticsearch is running before proceeding."
+  wait_for:
+    host   : "{{ es_network_host }}"
+    port   : "9200"
+    delay  : 3
+    timeout: 200

@@ -1,0 +1,11 @@
+---
+- hosts       : all
+  become      : true
+
+  gather_facts: true
+
+  roles       :
+    - role: commons
+    - role: java
+    - role: elasticsearch
+    - role: kibana

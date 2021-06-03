@@ -1,0 +1,6 @@
+---
+
+es_cluster_name    : "elk_cluster_local"
+es_node_name       : "elk_node_1"
+es_network_host    : "localhost"
+es_config_file_path: "/etc/elasticsearch/elasticsearch.yml"
